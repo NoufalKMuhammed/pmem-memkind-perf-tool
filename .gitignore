@@ -1,3 +1,9 @@
+compile_dev_vm
+compile_cluster
+copy
+a.out
+Makefile_bkup
+
 # Prerequisites
 *.d
 
