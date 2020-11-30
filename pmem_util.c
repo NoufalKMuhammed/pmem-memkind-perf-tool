@@ -56,6 +56,7 @@ void allocate_pmem_buf()
 		// fprintf(stdout, "PMEM kind %s is on DAX-enabled file system.\n", path);
 	} else {
 		fprintf(stdout, "PMEM kind %s is not on DAX-enabled file system.\n", path);
+		exit(1);
 	}
 
 	// Create PMEM partition with specific size
@@ -68,7 +69,7 @@ void allocate_pmem_buf()
 	pmem_src_buf = (char *)memkind_malloc(pmem_kind, buffer_size);
 	if (pmem_src_buf == NULL) {
 		fprintf(stderr, "Unable to allocate pmem_src_buf.\n");
-		return;
+		exit(1);
 	}
 	pmem_dst_buf = (char *)memkind_malloc(pmem_kind, buffer_size);
 	if (pmem_dst_buf == NULL) {
