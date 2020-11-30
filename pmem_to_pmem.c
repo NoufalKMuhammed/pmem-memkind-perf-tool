@@ -25,7 +25,7 @@ void pmem_to_pmem_random()
 
 	t = single_to_multi("RANDOM", src, dst);
 	t = multi_to_multi("RANDOM", src, dst);
-	t  = multi_to_single("RANDOM", src, dst);
+	t = multi_to_single("RANDOM", src, dst);
 }
 
 void pmem_to_pmem()
