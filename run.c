@@ -43,7 +43,7 @@ timing_info_t* single_to_multi(char *order, char *src, char *dst)
 	timing_info.end = rdtsc_e();
 	//  Return per operation run time, in nano seconds.
 	//  It is observed that 2 rdtsc ticks in one nano second.
-	timing_info.diff = (timing_info.end - timing_info.start) / iterations / block_size / 2 /* two rdtsc per nano second*/;
+	timing_info.diff = (timing_info.end - timing_info.start) / iterations / block_count / 2 /* two rdtsc per nano second*/;
 	printf("\nsingle_to_multi(ns)	: %llu ", timing_info.diff);
  	return &timing_info;
 }
@@ -65,7 +65,7 @@ timing_info_t* multi_to_multi(char *order, char *src, char *dst)
 	timing_info.end = rdtsc_e();
 	//  Return per operation run time, in nano seconds.
 	//  It is observed that 2 rdtsc ticks in one nano second.
-	timing_info.diff = (timing_info.end - timing_info.start) / iterations / block_size / 2 /* two rdtsc per nano second*/;
+	timing_info.diff = (timing_info.end - timing_info.start) / iterations / block_count / 2 /* two rdtsc per nano second*/;
 	printf("\nmulti_to_multi(ns)	: %llu ", timing_info.diff);
  	return &timing_info;
 }
@@ -87,7 +87,7 @@ timing_info_t* multi_to_single(char *order, char *src, char *dst)
 	timing_info.end = rdtsc_e();
 	//  Return per operation run time, in nano seconds.
 	//  It is observed that 2 rdtsc ticks in one nano second.
-	timing_info.diff = (timing_info.end - timing_info.start) / iterations / block_size / 2 /* two rdtsc per nano second*/;
+	timing_info.diff = (timing_info.end - timing_info.start) / iterations / block_count / 2 /* two rdtsc per nano second*/;
 	printf("\nmulti_to_single(ns)	: %llu ", timing_info.diff);
  	return &timing_info;
 }
