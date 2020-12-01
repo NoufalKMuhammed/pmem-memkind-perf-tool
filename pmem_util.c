@@ -49,7 +49,7 @@ void release_pmem_buf()
 
 void allocate_pmem_buf()
 {
-	printf("\nAllocating actual PMEM buffers...\n");
+	// printf("\nAllocating actual PMEM buffers...\n");
 	int err = 0;
 	int status = memkind_check_dax_path(path);
 	if (!status) {
