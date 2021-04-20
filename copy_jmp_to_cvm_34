@@ -1,0 +1,1 @@
+scp * nutanix@192.168.2.34:~/memkind/perf_tool/
