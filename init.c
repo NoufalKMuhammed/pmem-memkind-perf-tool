@@ -54,7 +54,7 @@ void free_src_dst_memory()
 #endif
 }
 
-void initialize_src_buffer()
+void warmup_src_dst_buffer()
 {
 	unsigned int i;
 
@@ -65,7 +65,9 @@ void initialize_src_buffer()
 
 	for (i = 0; i < block_count; i++) {
 		memcpy(ram_src_buf + (i * block_size), str, block_size);	
+		memcpy(ram_dst_buf + (i * block_size), str, block_size);	
 		memcpy(pmem_src_buf + (i * block_size), str, block_size);	
+		memcpy(pmem_dst_buf + (i * block_size), str, block_size);	
 	}
 }
 
@@ -108,10 +110,9 @@ void set_indx_arrays()
 void init()
 {
 	allocate_src_dst_memory();
-	initialize_src_buffer();
+	warmup_src_dst_buffer();
 	allocate_indx_arr_memory();
 	set_indx_arrays();
-
 }
 
 void release()

@@ -6,6 +6,7 @@ extern unsigned int block_size;
 extern unsigned int block_count;
 extern unsigned int iterations;
 extern unsigned int seed;
+extern char path[20];
 
 extern unsigned int* sequential_indx_arr;
 extern unsigned int* random_indx_arr;

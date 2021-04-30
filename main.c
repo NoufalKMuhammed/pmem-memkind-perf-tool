@@ -16,7 +16,7 @@
 #include "pmem_to_ram.h"
 #include "pmem_to_pmem.h"
 
-void parse_argv(int argc, char *argv[])
+void parse_args(int argc, char *argv[])
 {
 	int i;
 	for (i = optind; i < argc; i++)
@@ -25,8 +25,9 @@ void parse_argv(int argc, char *argv[])
 		char *val = strchr (str, '=');
 		if (val == NULL)
 		{
-			printf("\nUnknown arguemnt: %s", argv[i]);
-			printf("\nExample: ./a.out block_size=512 block_count=2048iterations=100 seed=123\n");
+			printf("\nUnknown arguments: %s", argv[i]);
+			printf("\nExample: ./a.out block_size=512 block_count=2048 \
+					iterations=100 seed=123 path=/mnt/pmem\n");
 			exit(1);
 		}
 		val++;
@@ -48,15 +49,22 @@ void parse_argv(int argc, char *argv[])
 			seed = atoi(val);
 			continue;
 		}
-		printf("\nUnknown arguemnt: %s\n", argv[i]);
-		printf("\nExample: ./a.out block_size=512 block_count=2048 iterations=100 seed=123\n");
+		if ( strcmp(name, "path") == 0) {
+
+			memcpy(path, val, strlen(val) + 1);
+			continue;
+		}
+		printf("\nUnknown arguments: %s", argv[i]);
+		printf("\nExample: ./a.out block_size=512 block_count=2048 iterations=100 \
+				seed=123 path=/mnt/pmem\n");
 		exit(1);
 	}
 }
 
 void print_params()
 {
-	printf("\nblock_size: %u, block_count: %u, iterations: %u, seed: %u", block_size, block_count, iterations, seed);
+	printf("\nblock_size=%u, block_count=%u, iterations=%u, seed=%u, path=%s",
+			block_size, block_count, iterations, seed, path);
 }
 
 void set_buffer_size()
@@ -66,7 +74,7 @@ void set_buffer_size()
 
 int main(int argc, char *argv[])
 {
-	parse_argv(argc, argv);
+	parse_args(argc, argv);
 	print_params();
 	set_buffer_size();
 	init();

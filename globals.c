@@ -8,6 +8,7 @@ unsigned int block_count = BLOCK_COUNT;
 unsigned int buffer_size = BLOCK_SIZE * BLOCK_COUNT;  
 unsigned int iterations = 1000;
 unsigned int seed = 123;
+char path[20];
 
 unsigned int* sequential_indx_arr;
 unsigned int* random_indx_arr;
